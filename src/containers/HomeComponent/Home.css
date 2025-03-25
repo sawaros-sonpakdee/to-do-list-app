@@ -1,0 +1,65 @@
+.body-home{
+    margin: 15px 15px;
+    padding: 0 0;
+    border: 3px solid #893533;
+    height: 96vh;
+    background-color: #E4D7C2;
+}
+#root{
+    height: auto;
+    display: block;
+}
+.body-home{
+    border: 3px solid #893533;
+    height: 96vh;
+    background-color: #E4D7C2;
+}
+.daily-head{
+    border-bottom: 3px solid #893533;
+    margin-bottom: 20px;
+    max-width: 100%;
+}
+.daily-head .container{
+    width: 100%;
+}
+.title{
+    margin: 40px 0px;
+    font-weight: 900;
+    color: #893533;
+}
+.month{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+button.btn-month {
+    background-color: transparent;
+    border: 0px;
+    color: #893533;
+    font-weight:500;
+}
+table{
+    width: 100%;
+}
+table,th,td{
+   border: 1px solid;
+}
+.day{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.mood{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.day>p>button{
+    padding: 15px;
+}
+.day-text,.mood p{
+    color: #893533;
+    font-weight:900;
+}
