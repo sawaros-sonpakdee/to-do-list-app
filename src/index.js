@@ -4,20 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { BrowserRouter,Routes,Route,HashRouter } from 'react-router-dom';
 import Home  from './pages/HomePage';
 import Login from './containers/LoginComponent/login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    {/* <BrowserRouter> */}
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Home" element={<Home />} />
-      </Routes>                          
-    </BrowserRouter>
+      </Routes>   
+      </HashRouter>                       
+    {/* </BrowserRouter> */}
   
   </React.StrictMode>
 );
