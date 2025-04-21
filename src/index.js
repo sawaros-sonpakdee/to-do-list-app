@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter,Routes,Route,HashRouter } from 'react-router-dom';
 import Home  from './pages/HomePage';
 import Login from './containers/LoginComponent/login';
+import Register from './containers/RegisterComponent/register';
+import './styles/variables.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +19,7 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Home" element={<Home />} />
+        <Route path="/Register" element={<Register/>}/>
       </Routes>   
       </HashRouter>                       
     {/* </BrowserRouter> */}

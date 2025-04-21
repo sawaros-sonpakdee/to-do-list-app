@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Button, Form, InputGroup } from "react-bootstrap/";
 import { useNavigate } from 'react-router-dom';
 import api from '../../api';
+import { Link } from 'react-router-dom';
 
 function LoginComponent() {
     const [showpassword, setShowpassword] = useState(false);
@@ -39,7 +40,7 @@ function LoginComponent() {
             const response = await api.post("/checklogin", {
                 username: input.username,
                 password: input.password,
-            } );
+            });
             console.log("Response:", response.data);
 
             if (response.data === 'success') {
@@ -49,7 +50,7 @@ function LoginComponent() {
                 navigate("/Home");
             }
             else {
-                setError("Login failed, Please check you credentials.");
+                setError("Login failed, Incorrect username or password. Please try again.");
                 navigate("/Login");
             }
 
@@ -79,43 +80,47 @@ function LoginComponent() {
     return (
         <div>
             <div className="brown-bear">
-                <img className="lover-moon" src={require('../../assets/images/Untitled_Artwork\ 8.png')} />
-                <img className="yellow-star" src={require('../../assets/images/Yellow_st.png')} />
-                <div className="form-signin">
-                    <div className='center topic-title'>
-                        <h2>Sign In</h2>
-                    </div>
-                    <Form onSubmit={handleSubmit}>
-                        <InputGroup className="mb-3 input-username">
-                            <InputGroup.Text id="username" ><img src={require('../../assets/images/User.png')} alt="Person Icon" /></InputGroup.Text>
-                            <Form.Control
-                                type='text'
-                                name='username'
-                                onChange={handleInput}
-                            />
-                        </InputGroup>
-                        <InputGroup className='input-password'>
-                            <InputGroup.Text id="password"><img src={require('../../assets/images/Key.png')} alt="Password Icon" /></InputGroup.Text>
-                            <Form.Control
-                                type={showpassword ? "text" : "password"}
-                                name='password'
-                                onChange={handleInput}
-                            />
-                            <Button className='icon-eye'
-                                onClick={() => setShowpassword(!showpassword)}>
-                                {showpassword ? <FaEye /> : <FaEyeSlash />}
+                <div className="bg-color-signin">
+                    <div className="form-signin">
+                        <div className='center topic-title'>
+                            <h1>Sign In</h1>
+                        </div>
+
+                        <Form onSubmit={handleSubmit}>
+                            <InputGroup className="mb-3 input-username">
+                                <InputGroup.Text id="username" ><img src={require('../../assets/icons/user.png')} alt="Person Icon" /></InputGroup.Text>
+                                <Form.Control
+                                    type='text'
+                                    name='username'
+                                    onChange={handleInput}
+                                />
+                            </InputGroup>
+                            <InputGroup className='input-password'>
+                                <InputGroup.Text id="password"><img src={require('../../assets/icons/key.png')} alt="Password Icon" /></InputGroup.Text>
+                                <Form.Control
+                                    type={showpassword ? "text" : "password"}
+                                    name='password'
+                                    onChange={handleInput}
+                                />
+                                <Button className='icon-eye'
+                                    // onClick={() => setShowpassword(!showpassword)}>
+                                    // {showpassword ? <FaEye /> : <FaEyeSlash />}
+                                    onClick={() => setShowpassword(!showpassword)}>
+                                    {showpassword ? <img className='eye-crossed' src={require('../../assets/icons/eye-crossed.png')} alt="Password Icon" /> : <img className='eye-crossed' src={require('../../assets/icons/eye.png')} alt="Password Icon" />}
+                                </Button>
+                            </InputGroup>
+                            <div className='register'>
+                                <Link to="/Register">Register?</Link>
+                            </div>
+                            <span className='warning-text' style={{ display: error ? 'block' : 'none' }}>{error}</span>
+                            <Button className='submit-btn' variant="primary" type="submit">
+                                Submit
                             </Button>
-                        </InputGroup>
-                        <span className='warning-text' style={{ color: 'white', display: error ? 'block' : 'none' }}>{error}</span>
-                        <Button className='submit-btn' variant="primary" type="submit">
-                            Submit
-                        </Button>
-                    </Form>
+                        </Form>
+                    </div>
                 </div>
-                <img className="blue-star" src={require('../../assets/images/blue_st.png')} />
             </div>
-            {/* </div> */}
-        </div>
+        </div >
 
     );
 }

@@ -1,0 +1,17 @@
+:root {
+    --color-white:#ffffff;
+    --color-primary-pink1: #FFF5F7;
+    --color-primary-pink2: #FFEAEE;
+    --color-primary-pink3: #ffd7df;
+    --color-primary-pink4: #FFB3C3;
+    --color-primary-pink5: #f6afc0;
+    --color-primary-pink6:#fec0ca;
+    --color-secondary-brown1: #e0d0c6;
+    --color-secondary-brown2: #C7B099;
+    --color-secondary-brown3: #BEB4B4;
+    --color-secondary-brown4: #B7AEAA;
+    --color-secondary-brown5:#A59E9D;
+    --color-warning-text: #FD8B8B;
+
+    --font-style:"Oleo Script", serif;
+}
