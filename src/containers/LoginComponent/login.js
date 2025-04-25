@@ -42,7 +42,6 @@ function LoginComponent() {
                 password: input.password,
             });
             console.log("Response:", response.data);
-
             if (response.data === 'success') {
                 console.log(response.status);
                 setError('');
@@ -80,7 +79,7 @@ function LoginComponent() {
     return (
         <div>
             <div className="brown-bear">
-                <div className="bg-color-signin">
+                <div className="form-bg-color">
                     <div className="form-signin">
                         <div className='center topic-title'>
                             <h1>Sign In</h1>
@@ -92,6 +91,7 @@ function LoginComponent() {
                                 <Form.Control
                                     type='text'
                                     name='username'
+                                    placeholder='Username'
                                     onChange={handleInput}
                                 />
                             </InputGroup>
@@ -100,21 +100,20 @@ function LoginComponent() {
                                 <Form.Control
                                     type={showpassword ? "text" : "password"}
                                     name='password'
+                                    placeholder='Password'
                                     onChange={handleInput}
                                 />
                                 <Button className='icon-eye'
-                                    // onClick={() => setShowpassword(!showpassword)}>
-                                    // {showpassword ? <FaEye /> : <FaEyeSlash />}
                                     onClick={() => setShowpassword(!showpassword)}>
                                     {showpassword ? <img className='eye-crossed' src={require('../../assets/icons/eye-crossed.png')} alt="Password Icon" /> : <img className='eye-crossed' src={require('../../assets/icons/eye.png')} alt="Password Icon" />}
                                 </Button>
                             </InputGroup>
                             <div className='register'>
-                                <Link to="/Register">Register?</Link>
+                                <Link to="/Register">SignUp?</Link>
                             </div>
                             <span className='warning-text' style={{ display: error ? 'block' : 'none' }}>{error}</span>
-                            <Button className='submit-btn' variant="primary" type="submit">
-                                Submit
+                            <Button className='submit-btn'  type="submit">
+                                SignIn
                             </Button>
                         </Form>
                     </div>

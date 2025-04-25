@@ -11,7 +11,79 @@
     --color-secondary-brown3: #BEB4B4;
     --color-secondary-brown4: #B7AEAA;
     --color-secondary-brown5:#A59E9D;
+    --color-secondary-brown6:#8e8988;
     --color-warning-text: #FD8B8B;
-
     --font-style:"Oleo Script", serif;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: var(--font-style);
+}
+
+body {
+
+    background: var(--color-primary-pink1);
+    text-align: center !important;
+
+}
+
+.form-bg-color{
+    background-color: var(--color-primary-pink2);
+    padding: 3vw 8vw;
+    border-radius: 20px;
+}
+.form-bg-color-signup{
+    background-color: var(--color-primary-pink2);
+    padding: 3vw 6vw;
+    border-radius: 20px;
+}
+
+.topic-title h1 {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    color: var(--color-primary-pink6);
+    -webkit-text-stroke: 3px white;
+}
+.icon-eye,
+.icon-eye:focus,
+.icon-eye:hover,
+.icon-eye:active,
+.icon-eye:focus  {
+    background-color: var(--color-primary-pink6) !important;
+    border-color:transparent !important;
+}
+.submit-btn {
+    padding: 8px 35px;
+    margin-top: 20px;
+    background-color: var(--color-primary-pink6);
+    border:5px solid var(--color-white);
+    border-radius:15px ;
+}
+
+.submit-btn:focus,
+.submit-btn::after,
+.submit-btn:hover,
+.submit-btn::before,
+.submit-btn:active,
+.submit-btn:focus {
+
+    background-color: var(--color-primary-pink3);
+    border: 5px solid var(--color-white);
+}
+.submit-btn:checked+.btn, .submit-btn.active, .submit-btn.show, .submit-btn:first-child:active, :not(.btn-check)+.submit-btn:active,.submit-btn:active {
+    background-color: var(--color-primary-pink3) !important;
+    border: 5px solid var(--color-white);
+}
+/* Default placeholder color for Chrome */
+.form-control,::placeholder, input::-webkit-input-placeholder {
+    color: var(--color-secondary-brown3) !important; /* Default placeholder color */
+}
+
+/* Placeholder color when input is focused */
+.form-control,input:focus::placeholder, input:focus::-webkit-input-placeholder {
+    color: var(--color-secondary-brown6) !important; 
 }
