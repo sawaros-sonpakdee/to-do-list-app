@@ -2,6 +2,7 @@ import { Button, InputGroup } from 'react-bootstrap';
 import '../RegisterComponent/register.css';
 import { Form } from "react-bootstrap/";
 import { useState } from 'react';
+import api from '../../services/api';
 
 
 
@@ -17,38 +18,43 @@ function RegisterComponent() {
     const validatePassword = (password, confirmPwd) => {
         // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
         const minLength = 8;
+        const maxLength = 15;
         const hasUpperCase = /[A-Z]/.test(password);
-        const hasLowerCase = /a-z/.test(password);
-        const hashNumber = /0-9/.test(password);
-        const hasSpecialChar = /[!@#$%^&*]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        const hashNumber = /[0-9]/.test(password);
+        const hasSpecialChar = /[!@#$%^&*_-]/.test(password);
         if (password !== confirmPwd) {
-            return setError("The passwords don't match.");
+            setError("The passwords don't match.");
+            return false
         }
         else {
-
-            if (password.length !== minLength) {
-                return setError("Password must be at least 8 characters long.");
-
+            if (password.length >= maxLength) {
+                setError("Password must be at least 15 characters long.");
+                return false;
+            }
+            if (password.length <= minLength) {
+                setError("Password must be at over  8 characters long.");
+                return false
             }
             if (!hasUpperCase) {
-                return setError("Password must contain at least one uppercase letter.");
-
+                setError("Password must contain at least one uppercase letter.");
+                return false;
             }
             if (!hasLowerCase) {
-                return setError("Password must contain at least one lowercase letter.");
-
+                setError("Password must contain at least one lowercase letter.");
+                return false;
             }
             if (!hashNumber) {
-                return setError("Password must contain at least one number.");
-
+                setError("Password must contain at least one number.");
+                return false;
             }
             if (!hasSpecialChar) {
-                return setError("Password must contain at least one special character.");
-
-            } 
+                setError("Password must contain at least one special character.");
+                return false;
+            }
+            setError('');
+            return true
         }
-        return setError('');
-
 
     }
 
@@ -62,16 +68,25 @@ function RegisterComponent() {
             [id]: value
         }));
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         const passwordError = validatePassword(input.password, input.confirmPwd);
-
-        setError(passwordError);
-        console.log("passwordError", passwordError);
-        console.log("Form submitted successfully");
+        console.log("passwordError :",passwordError);
+        if (passwordError !== false) {
+            try{
+                const response = await api.post("/createAccount",{
+                    username: input.username,
+                    password: input.password,
+                });
+                console.log("Response:", response.data);
+            }
+            catch (error) {
+                console.error("Error :", error.response?.data || error.message);
+                setError('The username is unavailable.');
+                console.log("false");
+            }   
+        }
     }
-
-
     return (
         <div>
             <div className="brown-bear-register">
@@ -125,4 +140,5 @@ function RegisterComponent() {
         </div>
     )
 }
+
 export default RegisterComponent;

@@ -3,7 +3,7 @@ import './login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Button, Form, InputGroup } from "react-bootstrap/";
 import { useNavigate } from 'react-router-dom';
-import api from '../../api';
+import api from '../../services/api';
 import { Link } from 'react-router-dom';
 
 function LoginComponent() {
@@ -120,7 +120,6 @@ function LoginComponent() {
                 </div>
             </div>
         </div >
-
     );
 }
 export default LoginComponent;
